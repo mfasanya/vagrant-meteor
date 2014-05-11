@@ -40,19 +40,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
-  config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync__exclude: [
-    "/build/**",
-    "/app/.meteor/local/**",
-    ".git/",
-    ".idea/",
-    ".npm/",
-    ".build/",
-    "node_modules/",
-    "/app/packages/bower-dependencies/components/***",
-    # Add your local packages here that should be copied, with:
-    # "+ /app/packages/MY_PACKAGE/***",
-    "/app/packages/**"
-  ]
+  config.vm.synced_folder ".", "/vagrant", type: "rsync",
+    rsync__args: ["--verbose", "--archive", "--delete", "-z", "--copy-links"],
+    rsync__exclude: [
+      "/build/**",
+      "/app/.meteor/local/**",
+      ".git/",
+      ".idea/",
+      ".npm/",
+      ".build/",
+      "node_modules/",
+      "/app/packages/bower-dependencies/components/***",
+      # Add your local packages here that should be copied, with:
+      # "+ /app/packages/MY_PACKAGE/***",
+      "/app/packages/**"
+    ]
   # Configure the window for gatling to coalesce writes.
   if Vagrant.has_plugin?("vagrant-gatling-rsync")
     config.gatling.latency = 1.5
