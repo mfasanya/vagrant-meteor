@@ -50,7 +50,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       ".npm/",
       ".build/",
       "node_modules/",
-      "/app/packages/bower-dependencies/components/***",
       # Add your local packages here that should be copied, with:
       # "+ /app/packages/MY_PACKAGE/***",
       "/app/packages/**"
