@@ -51,7 +51,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       "node_modules/",
       # Add your local packages here that should be copied, with:
       # "+ /app/packages/MY_PACKAGE/***",
-      "/app/packages/**"
+      "/*/packages/**"
     ]
   # Configure the window for gatling to coalesce writes.
   if Vagrant.has_plugin?("vagrant-gatling-rsync")
