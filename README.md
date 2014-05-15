@@ -16,8 +16,8 @@ If you want to use the Windows shell instead, you must add the cygwin/bin folder
 
 1. [Download](https://github.com/Sanjo/vagrant-meteor/archive/master.zip) this repository and unpack the downloaded zip file.
 2. Install the latest version of [Vagrant](http://www.vagrantup.com/downloads.html) (1.6.1 or newer is recommended).
-3. Open a shell and change the directory to the unpacked `vagrant-meteor` folder.
-4. Run the command `vagrant up` and wait until it finished. This will create the virtual machine.
+3. Open a shell and change the directory to the unpacked `vagrant-meteor-master` folder.
+4. Run the command `vagrant up` and wait until the installation finished. This will create the virtual machine.
 5. Run the command `vagrant ssh` to connect to the virtual machine. The `vagrant-meteor` folder is mounted to `/vagrant`.
 
 ### Vagrant 101
@@ -28,7 +28,7 @@ You will only need a few vagrant command that you should remember.
 * `vagrant ssh`: Opens a SSH connection to the virtual machine.
 * `vagrant suspend`: Pauses the virtual machine. It will save the current state to the disk.
 
-You can find more command and info in the [Vagrant documentation](http://docs.vagrantup.com/v2/cli/index.html).
+You can find more commands and info in the [Vagrant documentation](http://docs.vagrantup.com/v2/cli/index.html).
 
 ### Create a new app
 
@@ -38,7 +38,7 @@ You can find more command and info in the [Vagrant documentation](http://docs.va
 
 ### Use an existing app
 
-Move your app folder into the downloaded `vagrant-meteor` folder.
+Move your app folder into the downloaded `vagrant-meteor-master` folder.
 
 ### File synchronisation
 
@@ -46,25 +46,29 @@ Move your app folder into the downloaded `vagrant-meteor` folder.
 By default the files will only be copied to the virtual machine,
 when you start the virtual machine with `vagrant up` or reload it with `vagrant reload`.
 
-[`vagrant rsync-auto`](http://docs.vagrantup.com/v2/cli/rsync-auto.html) will watch your files and automatically copy changes to the virtual machine.
+`vagrant rsync-auto` will watch your files and automatically copy changes to the virtual machine.
+You have to run the command in a separate shell. The command is not perfect (yet).
+I recommend to read [the documentation](http://docs.vagrantup.com/v2/cli/rsync-auto.html) about it.
 
 #### Better alternative for Mac OS and Linux
 
-Install vagrant-gatling-rsync with `vagrant plugin install vagrant-gatling-rsync`.
-It's less CPU intensive than rsync-auto.
-Then run `vagrant gatling-rsync-auto` for automatic file synchronisation.
+There is a better plugin for `vagrant rsync-auto` that is more efficient and less CPU intensive.
+Install it with `vagrant plugin install vagrant-gatling-rsync`.
+Then run `vagrant gatling-rsync-auto` for automatic file synchronisation instead of `vagrant rsync-auto`.
 
 ### Start your app
-1. Connect the virtual machine with `vagrant ssh`.
+
+1. Connect to the virtual machine with `vagrant ssh`.
 1. Change to the app directory in the virtual machine (`cd /vagrant/<MY_APP>`)
 2. Start your app with `mrt` (or `meteor`).
 5. You can access the app on your host machine with `http://localhost:3000/`.
 
 ### Local smart packages
 
-By default the packages folder of your app won't be copied to the VM. Meteorite will install the packages inside the virtual machine.
-If you have local smart packages that should be copied to the VM, add them in the Vagrantfile where it says
+By default the packages folder of your app won't be copied to the virtual machine. Meteorite will install the packages inside the virtual machine.
+If you have local smart packages that should be copied, add them in the Vagrantfile where it says
 `# Add your local packages here` by adding a line `"+ /<MY_APP>/packages/<MY_PACKAGE>/***",` for each package under the comment.
+
 __Example__: My package is in the folder `vagrant-meteor/myApp/packages/myPackage/`. I would add the line `"+ /myApp/packages/myPackage/***"`.
 
 ### Debugging
