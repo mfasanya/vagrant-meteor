@@ -12,6 +12,14 @@ You must install [Cygwin](http://www.cygwin.com/install.html) with the packages 
 You can and use the Cygwin shell for running the vagrant commands.
 If you want to use the Windows shell instead, you must add the cygwin/bin folder to your [PATH](http://geekswithblogs.net/renso/archive/2009/10/21/how-to-set-the-windows-path-in-windows-7.aspx).
 
+### Synchronisation
+
+__Important:__ The folder is synchronised two times. It is necessary because Meteor don't likes the shared folders of
+Virtualbox that are usually used.
+
+1. __/vagrant:__ One way synchronisation from the host to the guest with rsync. __It must be used to start the app.__
+2. __/vagrant2:__ Two way synchronisation with a Virualbox shared folder. __Use it when you create or edit files in the guest.__
+
 ### Installation
 
 1. [Download](https://github.com/Sanjo/vagrant-meteor/archive/master.zip) this repository and unpack the downloaded zip file.
@@ -32,7 +40,7 @@ You can find more commands and info in the [Vagrant documentation](http://docs.v
 
 ### Create a new app
 
-1. Change the directory to `/vagrant` (with `cd /vagrant`)
+1. Change the directory to `/vagrant2` (with `cd /vagrant2`)
 2. Create a new app with `mrt create <name>` (see [Meteorite documentation](https://github.com/oortcloud/meteorite/)).
    You can also use the `meteor` tool if you want.
 
