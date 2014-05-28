@@ -18,7 +18,7 @@ __Important:__ The folder is synchronised two times. It is necessary because Met
 Virtualbox that are usually used.
 
 1. __/vagrant:__ One way synchronisation from the host to the guest with rsync. __It must be used to start the app.__
-2. __/vagrant2:__ Two way synchronisation with a Virualbox shared folder. __Use it when you create or edit files in the guest.__
+2. __/meteor:__ Two way synchronisation with a Virualbox shared folder. __Use it when you create or edit files in the guest.__
 
 ### Installation
 
@@ -40,7 +40,7 @@ You can find more commands and info in the [Vagrant documentation](http://docs.v
 
 ### Create a new app
 
-1. Change the directory to `/vagrant2` (with `cd /vagrant2`)
+1. Change the directory to `/meteor` (with `cd /meteor`)
 2. Create a new app with `mrt create <name>` (see [Meteorite documentation](https://github.com/oortcloud/meteorite/)).
    You can also use the `meteor` tool if you want.
 
