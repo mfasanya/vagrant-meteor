@@ -1,1 +1,8 @@
-.vagrant/
+*
+
+!test
+!scripts
+!.gitignore
+!LICENSE
+!README.md
+!Vagrantfile
