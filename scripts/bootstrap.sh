@@ -28,6 +28,12 @@ apt-get update
 # Node.js
 apt-get -y install nodejs
 
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
+
+sudo apt-get update
+sudo apt-get install mongodb-10gen
+
 # Install the rest with the vagrant user
 su vagrant
 
@@ -36,6 +42,10 @@ curl https://install.meteor.com | /bin/sh
 
 # Meteorite
 npm install -g meteorite
+
+mkdir -p /data/db
+service mongodb restart
+export MONGO_URL=mongodb://localhost:27017
 
 ##############################
 # Instructions
