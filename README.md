@@ -94,3 +94,4 @@ By default Vagrant will install:
 * NPM
 * Meteor
 * Meteorite
+* MongoDB
