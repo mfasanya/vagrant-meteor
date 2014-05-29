@@ -45,7 +45,7 @@ npm install -g meteorite
 
 mkdir -p /data/db
 service mongodb restart
-export MONGO_URL=mongodb://localhost:27017
+MONGO_URL=mongodb://localhost:27017
 
 ##############################
 # Instructions
